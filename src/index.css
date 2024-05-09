@@ -1,0 +1,235 @@
+.board {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  background: rgb(0, 0, 0);
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.wrapper.currentFire {
+  background: rgb(65, 40, 40);
+  background: radial-gradient(circle, #abe4ff 0%, #cc6300 70%);
+  opacity: 0;
+  animation: opacity 1s ease-in-out forwards;
+}
+
+.wrapper.currentIce {
+  background: rgb(31, 42, 48);
+  background: radial-gradient(circle, #cc6300 0%, #abe4ff 70%);
+  opacity: 0;
+  animation: opacity 1s ease-in-out forwards;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.button {
+  height: 5rem;
+  width: 5rem;
+  background: linear-gradient(170deg, #abe4ff 20%, #cc6300 90%);
+  margin: 5px;
+  outline: 3px solid rgba(245, 244, 244, 0.5);
+  border: none;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  border-radius: 14px;
+  transition: all 0.4s ease-out;
+}
+
+.button.notPlayed:disabled {
+  background: linear-gradient(170deg, #1a6083 20%, #964a03 90%);
+  transition: all 1s ease-out;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button:not([disabled]):hover {
+  cursor: pointer;
+}
+
+.button.fire:not([disabled]):hover {
+  box-shadow: 4px 4px 17px #650000;
+}
+
+.button.ice:not([disabled]):hover {
+  box-shadow: 4px 4px 17px #1e98dfab;
+}
+
+/**
+
+---------------------
+*/
+.button.canFire:hover:not([disabled]) {
+  box-shadow: 4px 4px 17px #650000;
+  background: linear-gradient(180deg, #f27d0c, #800909, #f07f13);
+  opacity: 0.8;
+  color: red;
+  text-shadow: 1px 1px 2px black;
+  font-size: 4.3rem;
+}
+
+.button.canFire:hover:not([disabled])::before {
+  content: "X";
+  opacity: 0.4;
+}
+
+.button.canIce:not([disabled]):hover {
+  box-shadow: 4px 4px 17px #1e98dfab;
+  background: linear-gradient(70deg, #dcf3ff, #baf2ef, #257ca3, #a2d2df);
+  opacity: 0.8;
+  color: rgb(0, 166, 207);
+  text-shadow: 1px 1px 2px rgb(172, 172, 172);
+  font-size: 4.3rem;
+}
+.button.canIce:not([disabled]):hover::before {
+  content: "O";
+  opacity: 0.4;
+}
+/**
+
+---------------------
+*/
+
+.button.fire.isWinCell {
+  box-shadow: inset 4px 4px 17px 13px #650000;
+}
+
+.button.ice.isWinCell {
+  box-shadow: inset 4px 4px 15px 8px #07304985;
+}
+
+.fire {
+  /*   background: #ff8417; */
+  position: relative;
+  color: #d06000d9;
+  border: 1px solid #ffc9c9;
+  text-shadow: 2px 2px 5px #31080885;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  background: linear-gradient(
+    180deg,
+    #fdcf58,
+    #f27d0c,
+    #800909,
+    #f07f13,
+    #757676
+  );
+  background-size: 800% 800%;
+
+  animation: fireAnimation 4s cubic-bezier(0.9, 0.05, 0.41, 0.45) infinite;
+}
+
+.fire::before {
+  overflow: clip;
+  content: "";
+  position: absolute;
+  z-index: 10;
+  height: 105%;
+  width: 104%;
+
+  animation: 1s infinite alternate ease-in-out blurrer;
+  content: "";
+  transition: all ease-in-out 1s;
+}
+
+.ice {
+  /*   background: #ccf5ff; */
+  position: relative;
+  color: #20c3eba3;
+  border: 1px solid #c9ffff;
+  text-shadow: 2px 2px 5px #048b85;
+
+  background: linear-gradient(70deg, #dcf3ff, #baf2ef, #257ca3, #a2d2df);
+  background-size: 500% 500%;
+
+  animation: iceAnimation 5s ease-in-out infinite;
+}
+
+.ice::before {
+  overflow: clip;
+  content: "";
+  position: absolute;
+  z-index: 10;
+  height: 105%;
+  width: 104%;
+
+  animation: 1s infinite alternate ease-in-out blurrer;
+  transition: all ease-in-out 1s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes blurrer {
+  from {
+    backdrop-filter: blur(0);
+  }
+
+  40% {
+    backdrop-filter: blur(0.3px);
+  }
+
+  50% {
+    backdrop-filter: blur(0);
+  }
+
+  60% {
+    backdrop-filter: blur(1.2px);
+  }
+
+  80% {
+    backdrop-filter: blur(0.1px);
+  }
+
+  to {
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes fireAnimation {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 61%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+@keyframes iceAnimation {
+  0% {
+    background-position: 50% 100%;
+  }
+  20% {
+    background-position: 50% 40%;
+  }
+  50% {
+    background-position: 80% 20%;
+  }
+  55% {
+    background-position: 75% 0%;
+  }
+  100% {
+    background-position: 20% 100%;
+  }
+}
+
+@keyframes rotateBg {
+  to {
+    transform: rotate(360deg);
+  }
+}
