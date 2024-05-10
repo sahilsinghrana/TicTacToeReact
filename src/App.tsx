@@ -5,9 +5,6 @@ import TicTacToe from "@sahilsinghrana/tictactoe.js";
 import "./index.css";
 const game = new TicTacToe();
 export default function App() {
-  console.log({
-    game,
-  });
   return (
     <div className="App">
       <Board />
@@ -16,8 +13,8 @@ export default function App() {
 }
 
 const Board = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, updateBoard] = useState(true);
-  console.log({ game });
   return (
     <div>
       <div

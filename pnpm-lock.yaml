@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@sahilsinghrana/tictactoe.js':
+    specifier: ^01.0.0-beta
+    version: 1.0.0-beta
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -454,6 +457,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@sahilsinghrana/tictactoe.js@1.0.0-beta:
+    resolution: {integrity: sha512-/FwvKFh4VaRcqoCKovfPq6fiRF5ciFjSdGSzk+nkgXry+0k5emvkZoco1CTA0BVsC+fplZFKcJljlTw9CXpChQ==}
+    dev: false
 
   /@swc/core-darwin-arm64@1.4.17:
     resolution: {integrity: sha512-HVl+W4LezoqHBAYg2JCqR+s9ife9yPfgWSj37iIawLWzOmuuJ7jVdIB7Ee2B75bEisSEKyxRlTl6Y1Oq3owBgw==}

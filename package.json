@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sahilsinghrana/tictactoe.js": "^0.1.1",
+    "@sahilsinghrana/tictactoe.js": "^01.0.0-beta",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
